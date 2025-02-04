@@ -94,6 +94,8 @@ class DataTransformation:
 
             logging.info("Applying preprocessing object on trainig dataframe and testing dataframe.")
 
+            # Article explaining Data Leakage and how to preprocess data avoiding it.
+            # https://towardsdatascience.com/data-leakage-in-preprocessing-explained-a-visual-guide-with-code-examples-33cbf07507b7/
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
