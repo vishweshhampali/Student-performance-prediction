@@ -5,8 +5,7 @@ This repository contains a complete **machine learning pipeline** for predicting
 ---
 
 ## 🚀 Features
-- **Data Ingestion**: Reads student performance data and splits it into training and testing sets.
-- **Data Transformation**: Handles missing values, encodes categorical variables, and scales numerical data.
+- **Data Ingestion**: Reads student performance data, preprocesses it, and splits it into training and testing sets.
 - **Model Training**: Trains and evaluates multiple regression models (Random Forest, XGBoost, CatBoost, etc.).
 - **Prediction Pipeline**: Uses the trained model to predict student scores based on input features.
 - **Flask Web App**: Provides a simple UI to input student data and get predictions.
@@ -15,23 +14,25 @@ This repository contains a complete **machine learning pipeline** for predicting
 
 ## 📚 Project Structure
 ```
-mlproject/
+Student-performance-prediction/
 │-- artifacts/               # Stores generated artifacts (datasets, models, preprocessor)
 │-- logs/                    # Stores application logs
 │-- notebook/                # Jupyter Notebooks for exploration
 │-- src/                     # Source code for ML pipeline
 │   ├── components/          # Data processing components
+│   │   ├── data_ingestion.py       # Handles reading, preprocessing, and splitting dataset
+│   │   ├── model_trainer.py        # Trains multiple regression models
+│   │   ├── __init__.py             # Package initialization
 │   ├── pipeline/            # Training and prediction pipelines
+│   │   ├── predict_pipeline.py     # Loads the trained model and makes predictions
+│   │   ├── train_pipeline.py       # Placeholder for training pipeline
+│   │   ├── __init__.py             # Package initialization
 │   ├── utils.py             # Utility functions (saving/loading models, evaluation)
 │   ├── exception.py         # Custom exception handling
 │   ├── logger.py            # Logging setup
 │-- templates/               # HTML templates for Flask UI
 │-- venv/                    # Virtual environment (not included in repo)
 │-- app.py                   # Flask application for web interface
-│-- data_ingestion.py        # Handles reading and splitting dataset
-│-- data_transformation.py   # Preprocesses data for model training
-│-- model_trainer.py         # Trains multiple regression models
-│-- predict_pipeline.py      # Loads the trained model and makes predictions
 │-- requirements.txt         # Dependencies
 │-- setup.py                 # Package setup
 │-- README.md                # Project documentation (this file)
@@ -43,8 +44,8 @@ mlproject/
 
 ### 1️⃣ Clone the Repository
 ```sh
-git clone https://github.com/your-username/new_project_name.git
-cd new_project_name
+git clone https://github.com/your-username/Student-performance-prediction.git
+cd Student-performance-prediction
 ```
 
 ### 2️⃣ Create a Virtual Environment (Optional but Recommended)
@@ -64,25 +65,13 @@ pip install -r requirements.txt
 
 ### 1️⃣ Run Data Pipeline and Model Training
 ```sh
-python data_ingestion.py
+python src/components/data_ingestion.py
 ```
 This will:
 - Load the dataset
+- Preprocess the data
 - Split it into train and test sets
-- Save them inside the `artifacts/` folder
-
-```sh
-python data_transformation.py
-```
-This will:
-- Handle missing values and feature encoding
-- Save the preprocessor as a pickle file
-
-```sh
-python model_trainer.py
-```
-This will:
-- Train and evaluate multiple models
+- Train and evaluate the model
 - Save the best-performing model as `model.pkl`
 
 ---
@@ -119,4 +108,3 @@ Feel free to fork this repository and submit pull requests. For major changes, o
 ## 📩 Contact
 👨‍💻 **Author:** Vishwesh  
 📧 Email: vishweshhampali@gmail.com  
-
